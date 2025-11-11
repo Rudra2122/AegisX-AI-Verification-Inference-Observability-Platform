@@ -311,4 +311,4 @@ python backend/api/main.py
 **Rudra Brahmbhatt**  
 🧩 AI Infrastructure & MLOps Engineer · Distributed Systems · Reliability Engineering · Formal Verification Automation  
 🎓 M.S. Computer Science · Texas State University  
-🌐 [LinkedIn](https://linkedin.com/rudra2122)
+🌐 [LinkedIn](https://www.linkedin.com/in/rudra2122/)
