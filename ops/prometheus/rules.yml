@@ -1,0 +1,44 @@
+groups:
+  - name: aegisx-alerts
+    interval: 15s
+    rules:
+
+      # Alert if backend stops exporting metrics
+      - alert: AegisXTargetDown
+        expr: up{job="aegisx-api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "AegisX API target down"
+          description: "Prometheus cannot scrape the AegisX API at host.docker.internal:8000"
+
+      # High latency alert
+      - alert: HighLatency
+        expr: histogram_quantile(0.95, sum(rate(aegis_latency_ms_bucket[5m])) by (le)) > 1000
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High request latency (>1s P95)"
+          description: "P95 latency exceeded 1000 ms for 2 minutes."
+
+      # Zero inference throughput alert
+      - alert: NoInferenceTraffic
+        expr: sum(rate(aegis_infer_requests_total[5m])) == 0
+        for: 5m
+        labels:
+          severity: info
+        annotations:
+          summary: "No inference traffic"
+          description: "No inference requests in the last 5 minutes."
+
+      # Formal verification failures
+      - alert: FormalRunFailed
+        expr: increase(aegis_formal_runs_total{result="failed"}[10m]) > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Formal verification failed"
+          description: "At least one formal run has failed in the last 10 minutes."

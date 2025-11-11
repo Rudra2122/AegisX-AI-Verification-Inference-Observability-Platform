@@ -1,0 +1,126 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+build/
+dist/
+*.spec
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --- Environments ---
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+.venv.bak/
+*.env
+*.venv
+
+# --- FastAPI / Logs ---
+*.log
+*.pid
+*.out
+*.tmp
+*.bak
+
+# --- Torch / ML Artifacts ---
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.tflite
+*.h5
+*.pkl
+*.npy
+*.npz
+*.joblib
+runs/
+checkpoints/
+models/
+datasets/
+experiments/
+lightning_logs/
+wandb/
+weights/
+torch_cache/
+torch_downloads/
+
+# --- Prometheus / Grafana ---
+prometheus_data/
+grafana_data/
+*.db
+*.json
+*.sqlite
+
+# --- Docker ---
+*.pid
+*.seed
+docker-compose.override.yml
+**/.docker/
+**/docker-data/
+**/docker-volumes/
+**/docker-logs/
+
+# --- Formal Verification ---
+*.vcd
+*.sby
+*.out
+formal_verifier/temp/
+proofs/
+coverage_reports/
+
+# --- System / IDE ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+*.orig
+*.tmp
+*.log
+*.lock
+*.cfg
+*.yml~
+*.yaml~
+*.json~
+
+# --- Node / Frontend (if any UI added) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Jupyter / Notebooks ---
+.ipynb_checkpoints/
+*.ipynb_save
+
+# --- Misc ---
+*.tar
+*.zip
+*.gz
+*.tgz
+*.rar
+*.7z
+*.bak
+*.old
+
+# --- Coverage / Testing ---
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/

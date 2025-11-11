@@ -1,0 +1,114 @@
+<!-- backend/templates/index.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>AegisX</title>
+  <style>
+    body { font-family: system-ui, -apple-system; margin: 24px; color:#eee; background:#111;}
+    .card { background:#1b1b1b; border:1px solid #333; border-radius:12px; padding:16px; margin-bottom:16px; }
+    button { padding:8px 12px; border-radius:8px; border:1px solid #666; cursor: pointer; background:#222; color:#eee; }
+    input { padding:6px; border-radius:6px; border:1px solid #444; background:#161616; color:#eee;}
+    pre { white-space: pre-wrap; background:#0f0f0f; border-radius:8px; padding:12px; }
+    a { color:#7cc4ff; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/vcd-parser@1.2.2/dist/vcd-parser.min.js"></script>
+</head>
+<body>
+  <h1>🛡️ AegisX</h1>
+
+  <div class="card">
+    <h2>Formal: PASS case (counter.sv)</h2>
+    <button onclick="runFormal('data/rtl_samples/counter.sv','counter')">Run PROVE</button>
+    <pre id="formalPass">Click to run…</pre>
+  </div>
+
+  <div class="card">
+    <h2>Formal: FAIL/COVER demo (fsm_buggy.sv)</h2>
+    <button onclick="runFormal('data/rtl_samples/fsm_buggy.sv','fsm_buggy')">Run COVER</button>
+    <div id="formalFailBox">
+      <pre id="formalFail">Click to run…</pre>
+      <div id="vcdView"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Upload RTL</h2>
+    <input id="rtlFile" type="file" />
+    <button onclick="uploadRTL()">Upload</button>
+    <pre id="uploadOut">No file uploaded.</pre>
+  </div>
+
+  <div class="card">
+    <h2>Inference</h2>
+    Batch <input id="batch" type="number" value="4" />
+    Workers <input id="workers" type="number" value="1" />
+    <button onclick="inferOnce()">Infer</button>
+    <button onclick="inferAuto()">Auto-Tune (20 trials)</button>
+    <button onclick="setPolicy('epsilon')">Policy: epsilon</button>
+    <button onclick="setPolicy('ucb1')">Policy: ucb1</button>
+    <button onclick="setPolicy('thompson')">Policy: thompson</button>
+    <pre id="inferOut">…</pre>
+  </div>
+
+  <div class="card">
+    <h2>Observability</h2>
+    <p>Prometheus: <a href="http://localhost:9090" target="_blank">:9090</a> • Grafana: <a href="http://localhost:3000" target="_blank">:3000</a></p>
+    <p>Metrics endpoint: <a href="/metrics" target="_blank">/metrics</a></p>
+  </div>
+
+<script>
+async function runFormal(path, top){
+  const r = await fetch("/formal/run",{method:"POST", headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({rtl_path: path, top: top, clk:"clk", rst:"rst"})});
+  const j = await r.json();
+  if(top==="fsm_buggy"){
+    document.getElementById("formalFail").textContent = JSON.stringify(j,null,2);
+    const vcd = (j.artifacts || []).find(p=>p.endsWith(".vcd"));
+    if(vcd){ renderVCD("/artifact?rel_path="+encodeURIComponent(vcd)); }
+  } else {
+    document.getElementById("formalPass").textContent = JSON.stringify(j,null,2);
+  }
+}
+
+async function renderVCD(url){
+  const res = await fetch(url); const text = await res.text();
+  const parsed = window.vcdParser.parse(text);
+  const signals = Object.keys(parsed.signals||{}).slice(0,12).join(", ");
+  document.getElementById("vcdView").innerHTML = `<p><b>VCD signals:</b> ${signals}</p><small>(Raw VCD downloaded and parsed client-side)</small>`;
+}
+
+async function uploadRTL(){
+  const inp = document.getElementById("rtlFile");
+  if(!inp.files.length) return alert("Choose file");
+  const fd = new FormData(); fd.append("file", inp.files[0]);
+  const r = await fetch("/formal/upload", {method:"POST", body: fd});
+  const j = await r.json();
+  document.getElementById("uploadOut").textContent = JSON.stringify(j,null,2);
+}
+
+async function inferOnce(){
+  const fd=new FormData();
+  fd.append("batch", document.getElementById("batch").value);
+  fd.append("workers", document.getElementById("workers").value);
+  const r = await fetch("/infer/once",{method:"POST", body:fd});
+  const j = await r.json();
+  document.getElementById("inferOut").textContent = JSON.stringify(j,null,2);
+}
+
+async function inferAuto(){
+  const fd=new FormData(); fd.append("trials", 20);
+  const r = await fetch("/infer/auto",{method:"POST", body:fd});
+  const j = await r.json();
+  document.getElementById("inferOut").textContent = JSON.stringify(j,null,2);
+}
+
+async function setPolicy(p){
+  const fd=new FormData(); fd.append("policy", p);
+  const r = await fetch("/infer/tuner/policy",{method:"POST", body:fd});
+  const j = await r.json();
+  document.getElementById("inferOut").textContent = JSON.stringify(j,null,2);
+}
+</script>
+</body>
+</html>

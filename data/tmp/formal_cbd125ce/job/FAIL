@@ -1,0 +1,6 @@
+Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+engine_0 (smtbmc z3) returned FAIL
+engine_0 did not produce any traces
+unreached cover statements:
+  fsm_buggy_tb._witness_.cover_cover_harness_sv_19_11 at harness.sv:19.13-19.34

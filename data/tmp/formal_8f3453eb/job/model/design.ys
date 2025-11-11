@@ -1,0 +1,8 @@
+# running in job/src/
+read -formal design.sv harness.sv
+prep -top fsm_buggy_tb
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

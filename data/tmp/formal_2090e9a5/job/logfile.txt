@@ -1,0 +1,2 @@
+SBY 10:14:05 [job] Removing directory '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_2090e9a5/job'.
+SBY 10:14:05 [job] ERROR: sby file syntax error: unexpected section 'prove', expected one of 'options, engines, script, autotune, file, files'

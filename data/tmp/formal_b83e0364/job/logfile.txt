@@ -1,0 +1,13 @@
+SBY  9:58:43 [job] Removing directory '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_b83e0364/job'.
+SBY  9:58:43 [job] Copy '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_b83e0364/design.sv' to '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_b83e0364/job/src/design.sv'.
+SBY  9:58:43 [job] Copy '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_b83e0364/harness.sv' to '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_b83e0364/job/src/harness.sv'.
+SBY  9:58:43 [job] engine_0: smtbmc z3
+SBY  9:58:43 [job] base: starting process "cd job/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  9:58:43 [job] base: harness.sv:10: ERROR: syntax error, unexpected '@'
+SBY  9:58:43 [job] base: finished (returncode=1)
+SBY  9:58:43 [job] base: task failed. ERROR.
+SBY  9:58:43 [job] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  9:58:43 [job] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  9:58:43 [job] summary: engine_0 (smtbmc z3) did not return a status
+SBY  9:58:43 [job] summary: engine_0 did not produce any traces
+SBY  9:58:43 [job] DONE (ERROR, rc=16)

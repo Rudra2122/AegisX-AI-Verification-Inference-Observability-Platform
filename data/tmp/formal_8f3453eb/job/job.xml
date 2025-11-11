@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2025-11-11T09:58:42" hostname="Rudras-MacBook-Air.local" package="job" id="0" name="default" tests="1" errors="1" failures="0" time="0" skipped="0">
+<properties>
+<property name="os" value="Darwin"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="ERROR"/>
+</properties>
+<testcase classname="default" name="default" time="0">
+<error type="ERROR"/>
+</testcase>
+<system-out>SBY  9:58:42 [job] Removing directory '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_8f3453eb/job'.
+SBY  9:58:42 [job] Copy '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_8f3453eb/design.sv' to '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_8f3453eb/job/src/design.sv'.
+SBY  9:58:42 [job] Copy '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_8f3453eb/harness.sv' to '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_8f3453eb/job/src/harness.sv'.
+SBY  9:58:42 [job] engine_0: smtbmc z3
+SBY  9:58:42 [job] base: starting process &quot;cd job/src; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY  9:58:42 [job] base: harness.sv:10: ERROR: syntax error, unexpected '@'
+SBY  9:58:42 [job] base: finished (returncode=1)
+SBY  9:58:42 [job] base: task failed. ERROR.
+SBY  9:58:42 [job] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  9:58:42 [job] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  9:58:42 [job] summary: engine_0 (smtbmc z3) did not return a status
+SBY  9:58:42 [job] summary: engine_0 did not produce any traces
+SBY  9:58:42 [job] DONE (ERROR, rc=16)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

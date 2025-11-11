@@ -1,0 +1,43 @@
+SBY 10:22:33 [job] Removing directory '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_0bbb5ed2/job'.
+SBY 10:22:33 [job] Copy '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_0bbb5ed2/design.sv' to '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_0bbb5ed2/job/src/design.sv'.
+SBY 10:22:33 [job] Copy '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_0bbb5ed2/harness.sv' to '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_0bbb5ed2/job/src/harness.sv'.
+SBY 10:22:33 [job] engine_0: smtbmc z3
+SBY 10:22:33 [job] base: starting process "cd job/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY 10:22:33 [job] base: finished (returncode=0)
+SBY 10:22:33 [job] prep: starting process "cd job/model; yosys -ql design_prep.log design_prep.ys"
+SBY 10:22:33 [job] prep: finished (returncode=0)
+SBY 10:22:33 [job] smt2: starting process "cd job/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY 10:22:33 [job] smt2: finished (returncode=0)
+SBY 10:22:33 [job] engine_0: starting process "cd job; yosys-smtbmc -s z3 --presat -c --noprogress -t 20  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Solver: z3
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 6..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 7..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 8..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 9..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 10..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 11..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 12..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 13..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 14..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 15..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 16..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 17..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 18..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Checking cover reachability in step 19..
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Unreached cover statement at fsm_buggy_tb: harness.sv:17.13-17.30 (_witness_.cover_cover_harness_sv_17_11)
+SBY 10:22:33 [job] engine_0: ##   0:00:00  Status: failed
+SBY 10:22:33 [job] engine_0: finished (returncode=1)
+SBY 10:22:33 [job] engine_0: Status returned by engine: FAIL
+SBY 10:22:33 [job] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 10:22:33 [job] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 10:22:33 [job] summary: engine_0 (smtbmc z3) returned FAIL
+SBY 10:22:33 [job] summary: engine_0 did not produce any traces
+SBY 10:22:33 [job] summary: unreached cover statements:
+SBY 10:22:33 [job] summary:   fsm_buggy_tb._witness_.cover_cover_harness_sv_17_11 at harness.sv:17.13-17.30
+SBY 10:22:33 [job] DONE (FAIL, rc=2)

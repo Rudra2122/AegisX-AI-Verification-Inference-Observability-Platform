@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2025-11-11T12:30:41" hostname="Rudras-MacBook-Air.local" package="job" id="0" name="default" tests="2" errors="0" failures="2" time="0" skipped="1">
+<properties>
+<property name="os" value="Darwin"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="FAIL"/>
+</properties>
+<testcase classname="default" name="build execution" time="0">
+<failure type="FAIL" message="Task returned status FAIL." />
+</testcase>
+<testcase classname="default" name="Property COVER in fsm_buggy_tb at harness.sv:19.13-19.34" time="0" type="COVER" location="harness.sv:19.13-19.34" id="_witness_.cover_cover_harness_sv_19_11">
+<failure type="COVER" message="Property COVER in fsm_buggy_tb at harness.sv:19.13-19.34 failed." />
+</testcase>
+<testcase classname="default" name="Property ASSERT in fsm_buggy_tb at harness.sv:16.13-16.31" time="0" type="ASSERT" location="harness.sv:16.13-16.31" id="_witness_.assert_assert_harness_sv_16_9">
+<skipped />
+</testcase>
+<system-out>SBY 12:30:41 [job] Removing directory '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_006876e3/job'.
+SBY 12:30:41 [job] Copy '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_006876e3/design.sv' to '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_006876e3/job/src/design.sv'.
+SBY 12:30:41 [job] Copy '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_006876e3/harness.sv' to '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_006876e3/job/src/harness.sv'.
+SBY 12:30:41 [job] engine_0: smtbmc z3
+SBY 12:30:41 [job] base: starting process &quot;cd job/src; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 12:30:41 [job] base: finished (returncode=0)
+SBY 12:30:41 [job] prep: starting process &quot;cd job/model; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 12:30:41 [job] prep: finished (returncode=0)
+SBY 12:30:41 [job] smt2: starting process &quot;cd job/model; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 12:30:41 [job] smt2: finished (returncode=0)
+SBY 12:30:41 [job] engine_0: starting process &quot;cd job; yosys-smtbmc -s z3 --presat -c --noprogress -t 20  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2&quot;
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Solver: z3
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 6..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 7..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 8..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 9..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 10..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 11..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 12..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 13..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 14..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 15..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 16..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 17..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 18..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Checking cover reachability in step 19..
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Unreached cover statement at fsm_buggy_tb: harness.sv:19.13-19.34 (_witness_.cover_cover_harness_sv_19_11)
+SBY 12:30:41 [job] engine_0: ##   0:00:00  Status: failed
+SBY 12:30:41 [job] engine_0: finished (returncode=1)
+SBY 12:30:41 [job] engine_0: Status returned by engine: FAIL
+SBY 12:30:41 [job] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 12:30:41 [job] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 12:30:41 [job] summary: engine_0 (smtbmc z3) returned FAIL
+SBY 12:30:41 [job] summary: engine_0 did not produce any traces
+SBY 12:30:41 [job] summary: unreached cover statements:
+SBY 12:30:41 [job] summary:   fsm_buggy_tb._witness_.cover_cover_harness_sv_19_11 at harness.sv:19.13-19.34
+SBY 12:30:41 [job] DONE (FAIL, rc=2)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

@@ -1,0 +1,2 @@
+SBY 10:14:27 [job] Removing directory '/Users/rudrabrahmbhatt/Documents/AegisX/data/tmp/formal_017885bd/job'.
+SBY 10:14:27 [job] ERROR: sby file syntax error: unexpected section 'cover', expected one of 'options, engines, script, autotune, file, files'
